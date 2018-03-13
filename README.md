@@ -1,2 +1,2 @@
 # SeedOnline
-Rede Social com foco em pessoas que curtem plantas
+Rede Social bem loca de todynho
