@@ -1,0 +1,5 @@
+C:\Users\Akah\source\repos\InfTeamApi\Model\bin\Release\Model.dll
+C:\Users\Akah\source\repos\InfTeamApi\Model\bin\Release\Model.pdb
+C:\Users\Akah\source\repos\InfTeamApi\Model\obj\Release\Model.csproj.CoreCompileInputs.cache
+C:\Users\Akah\source\repos\InfTeamApi\Model\obj\Release\Model.dll
+C:\Users\Akah\source\repos\InfTeamApi\Model\obj\Release\Model.pdb

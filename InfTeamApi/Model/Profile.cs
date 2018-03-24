@@ -14,7 +14,7 @@ namespace Model
         public DateTime Birthday { get; set; }
         public String Email { get; set; }
         public Role Role { get; set; }
-        public List<Team> teams { get; set; }
+        public List<Team> Teams { get; set; }
         public List<Profile> contacts { get; set; }
     }
 }

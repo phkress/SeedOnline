@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Role
+    public class Role
     {
         public int Id { get; set; }
         public bool Leader { get; set; }
