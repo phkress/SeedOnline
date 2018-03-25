@@ -3,3 +3,14 @@ C:\Users\Akah\source\repos\InfTeamApi\Model\bin\Release\Model.pdb
 C:\Users\Akah\source\repos\InfTeamApi\Model\obj\Release\Model.csproj.CoreCompileInputs.cache
 C:\Users\Akah\source\repos\InfTeamApi\Model\obj\Release\Model.dll
 C:\Users\Akah\source\repos\InfTeamApi\Model\obj\Release\Model.pdb
+C:\Users\Akah\source\repos\SeedOnline\InfTeamApi\Model\obj\Release\Model.csprojResolveAssemblyReference.cache
+C:\Users\Akah\source\repos\SeedOnline\InfTeamApi\Model\obj\Release\Model.csproj.CoreCompileInputs.cache
+C:\Users\Akah\source\repos\SeedOnline\InfTeamApi\Model\obj\Release\Model.dll
+C:\Users\Akah\source\repos\SeedOnline\InfTeamApi\Model\obj\Release\Model.pdb
+C:\Users\Akah\source\repos\SeedOnline\InfTeamApi\Model\bin\Release\Model.dll
+C:\Users\Akah\source\repos\SeedOnline\InfTeamApi\Model\bin\Release\Model.pdb
+C:\Users\Akah\source\repos\SeedOnline\InfTeamApi\Model\bin\Release\Model.dll.config
+C:\Users\Akah\source\repos\SeedOnline\InfTeamApi\Model\bin\Release\EntityFramework.dll
+C:\Users\Akah\source\repos\SeedOnline\InfTeamApi\Model\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Akah\source\repos\SeedOnline\InfTeamApi\Model\bin\Release\EntityFramework.xml
+C:\Users\Akah\source\repos\SeedOnline\InfTeamApi\Model\bin\Release\EntityFramework.SqlServer.xml
