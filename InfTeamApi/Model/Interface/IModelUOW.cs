@@ -12,8 +12,6 @@ namespace Model.Interface
 
         IPost Posts { get; }
 
-        IRole Roles { get; }
-
         ITeam Teams { get; }
 
         ITodo Todos { get; }

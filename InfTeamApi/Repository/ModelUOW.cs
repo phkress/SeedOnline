@@ -17,8 +17,6 @@ namespace Repository
 
         public IPost Posts { get; private set; }
 
-        public IRole Roles { get; private set; }
-
         public ITeam Teams { get; private set; }
 
         public ITodo Todos { get; private set; }
@@ -28,7 +26,6 @@ namespace Repository
             _context = context;
             Profiles = new ProfileRepository(_context);
             Posts = new PostRepository(_context);
-            Roles = new RoleRepository(_context);
             Teams = new TeamRepository(_context);
             Todos = new TodoRepository(_context);
         }        

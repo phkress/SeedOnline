@@ -17,7 +17,7 @@ namespace Model
         public String ProfilePhoto { get; set; }
         public DateTime? Birthday { get; set; }
         public String Email { get; set; }
-        public Role Role { get; set; }
+        public String Role { get; set; }
         public virtual ICollection<Team> Teams { get; set; }
         public virtual ICollection<Profile> Contacts { get; set; }
 
