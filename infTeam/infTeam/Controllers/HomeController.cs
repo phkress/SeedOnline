@@ -12,6 +12,17 @@ namespace infTeam.Controllers
 {
     public class HomeController : Controller
     {
+        private void StoreUserId()
+        {
+            if (User.Identity.Name != null || User.Identity.Name != "")
+            {
+                ProfileService profileService = new ProfileService();
+                ICollection<Profile> profiles = profileService.GetAll().ToList();
+                Profile profile = profiles.Where(p => p.Email == User.Identity.Name).First();
+                Session["User"] = profile.Id;
+            }
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -20,10 +31,11 @@ namespace infTeam.Controllers
         [Authorize]
         public ActionResult In()
         {
+            StoreUserId();
             ProfileService profileService = new ProfileService();
-            Profile profileIn = profileService.GetProfile(User.Identity.GetUserName());
-
-            ViewBag.ProfileIn = profileIn;
+            var profileId = Convert.ToInt32(Session["User"]);
+            Profile profile = profileService.GetProfile(profileId);
+            ViewBag.ProfileIn = profile;
             ViewBag.Message = "Your application description page.";
 
             return View();

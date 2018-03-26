@@ -20,7 +20,7 @@ namespace Repository
         public Profile GetProfile(int id)
         {
             repositoryComposer.Path = "/api/profiles/" + id;
-            Profile profile = repositoryComposer.Get(id);
+            Profile profile = repositoryComposer.Get();
             return profile;
         }
 

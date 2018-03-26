@@ -23,8 +23,7 @@ namespace Service
 
         public Profile GetProfile(int id)
         {
-            Profile profile = profileRepository.GetProfile(id);
-            if 
+            return profileRepository.GetProfile(id);
         }
 
         public void CreateNewProfile(Profile profile)

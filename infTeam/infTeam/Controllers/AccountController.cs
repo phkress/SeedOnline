@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using infTeam.Models;
 using Service;
 using Model;
+using System.Collections.Generic;
 
 namespace infTeam.Controllers
 {
@@ -402,6 +403,7 @@ namespace infTeam.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session.RemoveAll();
             return RedirectToAction("Index", "Home");
         }
 
@@ -459,7 +461,7 @@ namespace infTeam.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("In", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
