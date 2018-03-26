@@ -9,7 +9,7 @@ namespace Repository
 {
     public class ProfileRepository
     {
-        RepositoryComposer<Profile> repositoryComposer = new RepositoryComposer<Profile>("http://localhost:53480/");
+        RepositoryComposer<Profile> repositoryComposer = new RepositoryComposer<Profile>("http://localhost:53480");
 
         public IEnumerable<Profile> GetAll()
         {
@@ -24,10 +24,13 @@ namespace Repository
             return profile;
         }
 
-        public bool Add(Profile profile)
+        public void Add(Profile profile)
         {
-            return repositoryComposer.Add(profile);
+            repositoryComposer.Path = "/api/profiles";
+            repositoryComposer.Add(profile);
         }
+
+
 
     }
 }

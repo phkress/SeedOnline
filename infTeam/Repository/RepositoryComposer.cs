@@ -76,7 +76,7 @@ namespace Repository
         {
         }
 
-        public T Get(int id)
+        public T Get()
         {
             HttpClient infTeamApiClient = getInfTeamApiClient();
 

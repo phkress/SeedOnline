@@ -76,9 +76,17 @@ namespace infTeam.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Confirme o password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Nome")]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Cargo")]
+        public string Role { get; set; }
     }
 
     public class ResetPasswordViewModel

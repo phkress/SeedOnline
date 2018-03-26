@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Repository;
 using Model;
 using Service;
+using Microsoft.AspNet.Identity;
 
 namespace infTeam.Controllers
 {
@@ -16,10 +17,11 @@ namespace infTeam.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult In()
         {
             ProfileService profileService = new ProfileService();
-            Profile profileIn = profileService.GetProfile(1);
+            Profile profileIn = profileService.GetProfile(User.Identity.GetUserName());
 
             ViewBag.ProfileIn = profileIn;
             ViewBag.Message = "Your application description page.";
