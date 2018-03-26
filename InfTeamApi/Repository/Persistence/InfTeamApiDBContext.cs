@@ -17,7 +17,6 @@ namespace Repository.Persistence
 
         public virtual DbSet<Profile> Profiles { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<Todo> Todos { get; set; }
     }
