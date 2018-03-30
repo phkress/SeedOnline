@@ -28,7 +28,7 @@ namespace Repository
             return Context.Set<T>().Where(predicate);
         }
 
-        public T get(int id)
+        public T get(String id)
         {
             return Context.Set<T>().Find(id);
         }

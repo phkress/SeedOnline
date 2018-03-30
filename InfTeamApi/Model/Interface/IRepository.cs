@@ -9,7 +9,7 @@ namespace Model.Interface
 {
     public interface IRepository<T> where T : class
     {
-        T get(int id);
+        T get(String id);
         IEnumerable<T> GetAll();
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
         void Add(T entity);

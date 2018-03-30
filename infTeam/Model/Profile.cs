@@ -8,7 +8,8 @@ namespace Model
 {
     public class Profile
     {
-        public int Id { get; set; }
+        public String Id { get; set; }
+        public ApplicationIdentity Identity;
         public String Name { get; set; }
         public String ProfilePhoto { get; set; }
         public String Email { get; set; }

@@ -6,27 +6,28 @@ using System.Web.Mvc;
 
 namespace infTeam.Controllers
 {
-    public class ProfileController : Controller
+    public class TeamController : Controller
     {
-        // GET: Profile
-        public ActionResult Index(int id)
+        // GET: Team
+        public ActionResult Index()
         {
+            IEnumerable<Team> teams = 
             return View();
         }
 
-        // GET: Profile/Details/5
+        // GET: Team/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Profile/Create
+        // GET: Team/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Profile/Create
+        // POST: Team/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -42,13 +43,13 @@ namespace infTeam.Controllers
             }
         }
 
-        // GET: Profile/Edit/5
+        // GET: Team/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Profile/Edit/5
+        // POST: Team/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -64,13 +65,13 @@ namespace infTeam.Controllers
             }
         }
 
-        // GET: Profile/Delete/5
+        // GET: Team/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Profile/Delete/5
+        // POST: Team/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

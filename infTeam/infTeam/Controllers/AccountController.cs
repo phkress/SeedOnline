@@ -160,11 +160,16 @@ namespace infTeam.Controllers
                 {
 
                     ProfileService profileService = new ProfileService();
-                    Profile profile = new Profile();
-                    profile.Name = model.Name;
-                    profile.Email = model.Email;
-                    profile.Role = model.Role;
-                    profileService.CreateNewProfile(profile);
+
+                    Profile profile = new Profile()
+                    {
+                        Id = model.Email,
+                        Name = model.Name,
+                        Email = model.Email,
+                        Role = model.Role
+                    };
+
+                profileService.CreateNewProfile(profile);
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 

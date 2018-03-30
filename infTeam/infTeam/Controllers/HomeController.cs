@@ -31,10 +31,8 @@ namespace infTeam.Controllers
         [Authorize]
         public ActionResult In()
         {
-            StoreUserId();
             ProfileService profileService = new ProfileService();
-            var profileId = Convert.ToInt32(Session["User"]);
-            Profile profile = profileService.GetProfile(profileId);
+            Profile profile = profileService.GetProfile(User.Identity.Name);
             ViewBag.ProfileIn = profile;
             ViewBag.Message = "Your application description page.";
 

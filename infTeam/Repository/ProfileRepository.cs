@@ -17,7 +17,7 @@ namespace Repository
             return repositoryComposer.GetAll();
         }
 
-        public Profile GetProfile(int id)
+        public Profile GetProfile(String id)
         {
             repositoryComposer.Path = "/api/profiles/" + id;
             Profile profile = repositoryComposer.Get();

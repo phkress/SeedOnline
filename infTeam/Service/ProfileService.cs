@@ -21,9 +21,10 @@ namespace Service
             return profileRepository.GetAll();
         }
 
-        public Profile GetProfile(int id)
+        public Profile GetProfile(String id)
         {
-            return profileRepository.GetProfile(id);
+            Profile profile = profileRepository.GetProfile(id);
+            return profile;
         }
 
         public void CreateNewProfile(Profile profile)

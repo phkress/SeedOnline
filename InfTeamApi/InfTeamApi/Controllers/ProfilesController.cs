@@ -26,7 +26,7 @@ namespace InfTeamApi.Controllers
 
         // GET: api/Profiles/5
         [ResponseType(typeof(Profile))]
-        public IHttpActionResult GetProfile(int id)
+        public IHttpActionResult GetProfile(String id)
         {
             Profile profile = db.Profiles.get(id);
             if (profile == null)
@@ -39,7 +39,7 @@ namespace InfTeamApi.Controllers
 
         // PUT: api/Profiles/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutProfile(int id, Profile profile)
+        public IHttpActionResult PutProfile(String id, Profile profile)
         {
             if (!ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace InfTeamApi.Controllers
 
         // DELETE: api/Profiles/5
         [ResponseType(typeof(Profile))]
-        public IHttpActionResult DeleteProfile(int id)
+        public IHttpActionResult DeleteProfile(String id)
         {
             Profile profile = db.Profiles.get(id);
             if (profile == null)

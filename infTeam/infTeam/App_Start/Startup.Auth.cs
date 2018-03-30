@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using infTeam.Models;
+using Model;
+using Repository;
 
 namespace infTeam
 {

@@ -190,13 +190,13 @@
     padding-top: 0;
     overflow: hidden;
     text-align: center;
-    background-color: rgba(214, 224, 226, 0.2);
+    background-color: #f7f7f7;
 }
 
     .card.hovercard .cardheader {
-        background: url("http://lorempixel.com/850/280/nature/4/");
+        background-color: #ffffff;
         background-size: cover;
-        height: 135px;
+        height: 80px;
     }
 
     .card.hovercard .avatar {
@@ -236,12 +236,34 @@
             text-overflow: ellipsis;
         }
 
+    .card.hovercard .info-menu {
+        padding: 4px 8px 10px;
+    }
+
+        .card.hovercard .info-menu .title {
+            margin-bottom: 4px;
+            font-size: 24px;
+            line-height: 1;
+            color: #262626;
+            vertical-align: middle;
+        }
+
+        .card.hovercard .info-menu .desc {
+            overflow: hidden;
+            font-size: 12px;
+            line-height: 20px;
+            color: #737373;
+            text-overflow: ellipsis;
+        }
+
+
+
     .card.hovercard .bottom {
         padding: 0 20px;
         margin-bottom: 17px;
     }
 
-.btn {
+.card > .bottom > .btn {
     border-radius: 50%;
     width: 32px;
     height: 32px;
