@@ -16,10 +16,11 @@ namespace Repository
         {
         }
 
+        InfTeamApiDBContext context = new InfTeamApiDBContext();
+
         public Profile Get(String id)
         {
-            InfTeamApiDBContext context = new InfTeamApiDBContext();
-            var profile = context.Profiles.Include(p => p.Teams).Where(p => p.Id == id).FirstOrDefault();
+            var profile = context.Profiles.Include(p => p.Teams).Single(p => p.Id == id);
             return profile;
         }
 

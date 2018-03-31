@@ -15,5 +15,12 @@ namespace Model
         public String Role { get; set; }
         public ICollection<Team> Teams { get; set; }
         public ICollection<Profile> Contacts { get; set; }
+
+
+        public bool HasTeam(int id)
+        {
+           return this.Teams.ToList().Any(t => t.Id == id);
+        }
     }
+
 }

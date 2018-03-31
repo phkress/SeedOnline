@@ -8,6 +8,7 @@ using Model;
 
 namespace infTeam.Controllers
 {
+    [OutputCache(NoStore = true, Duration = 0)]
     public class TeamController : Controller
     {
         TeamService teamService = new TeamService();

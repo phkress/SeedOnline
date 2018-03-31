@@ -51,12 +51,12 @@
             </div>
         </div>
         <!-- Equipes -->
-        <div class="col-lg-9 content-block">
-            <h2>@ViewBag.Title</h2>
-
+        <div class="col-lg-9 contentBloco">
+            <h2>Equipes</h2>
+            <hr />
+            <a href="@Url.Action("Create")" class="btn btn-primary btn-xs pull-right rightButtonsMargin"><b>+</b> Adicionar nova Equipe</a>
             <table class="table table-striped custab">
                 <thead>
-                    <a href="@Url.Action("Create")" class="btn btn-primary btn-xs pull-right"><b>+</b> Adicionar nova Equipe</a>
                 </thead>
                 @foreach (var team in ViewBag.AllTeams)
                 {

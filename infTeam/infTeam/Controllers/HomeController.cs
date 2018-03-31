@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity;
 
 namespace infTeam.Controllers
 {
+    [OutputCache(NoStore = true, Duration = 0)]
     public class HomeController : Controller
     {
         ProfileService profileService = new ProfileService();

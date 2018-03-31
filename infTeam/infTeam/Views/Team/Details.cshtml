@@ -29,11 +29,11 @@
                     </div>
                     @foreach (var team in ViewBag.ProfileIn.Teams)
                     {
-                    <div class="bottom">
-                        <a class="btn btn-sm" href="https://twitter.com/webmaniac">
-                            @team.Name
-                        </a>
-                    </div>
+                        <div class="bottom">
+                            <a class="btn btn-sm" href="https://twitter.com/webmaniac">
+                                @team.Name
+                            </a>
+                        </div>
                     }
                 </div>
                 <div class="info-menu">
@@ -42,11 +42,11 @@
                     </div>
                     @foreach (var contact in ViewBag.ProfileIn.Contacts)
                     {
-                    <div class="bottom">
-                        <a class="btn btn-sm" href="https://twitter.com/webmaniac">
-                            @contact.Name
-                        </a>
-                    </div>
+                        <div class="bottom">
+                            <a class="btn btn-sm" href="https://twitter.com/webmaniac">
+                                @contact.Name
+                            </a>
+                        </div>
                     }
                 </div>
             </div>
@@ -60,8 +60,15 @@
                 <hr />
                 <table class="table table-striped custab">
                     <thead>
-                        <a href="@Url.Action("Enter", "Team", new { id = ViewBag.SelectedTeam.Id })" class="btn btn-success btn-xs pull-right"><b>+</b> Entrar</a>
-                        <th>Membros</th>
+                    @if (!ViewBag.ProfileIn.HasTeam(ViewBag.SelectedTeam.Id))
+                    {
+                    <a href="@Url.Action("Enter", "Team", new { id = ViewBag.SelectedTeam.Id })" class="btn btn-success btn-xs pull-right rightButtonsMargin"><b>+</b> Entrar</a>
+                    }
+                    else
+                    {
+                    <a href="@Url.Action("Leave", "Team", new { id = ViewBag.SelectedTeam.Id })" class="btn btn-danger btn-xs pull-right rightButtonsMargin"><b>-</b> Sair</a>
+                    }
+                    <th>Membros</th>
                     </thead>
                     @foreach (var profile in ViewBag.SelectedTeam.Profiles)
                     {
