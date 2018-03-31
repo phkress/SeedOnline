@@ -33,5 +33,10 @@ namespace Repository
             repositoryComposer.Add(team);
         }
 
+        public void Remove(Team team)
+        {
+            repositoryComposer.Path = "/api/teams/" + team.Id;
+            repositoryComposer.Remove(team);
+        }
     }
 }

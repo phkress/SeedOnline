@@ -29,8 +29,7 @@ namespace infTeam.Controllers
         public ActionResult Details(int id)
         {
             ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
-            var team = teamService.GetTeam(id);
-            ViewBag.SelectedTeam = team;
+            ViewBag.SelectedTeam = teamService.GetTeam(id);
             return View();
         }
 
@@ -65,7 +64,7 @@ namespace infTeam.Controllers
 
 
 
-        // POST: Team/Enter
+        // POST: Team/Enter/1
         public ActionResult Enter(int id)
         {
             try
@@ -74,17 +73,44 @@ namespace infTeam.Controllers
                 Profile profile = profileService.GetProfile(User.Identity.Name);
                 team.Profiles.Add(profile);
                 teamService.UpdateTeam(id, team);
-                return RedirectToAction("In", "Home");
+                ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
+                ViewBag.SelectedTeam = teamService.GetTeam(id);
+                return RedirectToAction("Index");
             }
             catch
             {
-                return RedirectToAction("Details/" + id);
+                ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
+                ViewBag.SelectedTeam = teamService.GetTeam(id);
+                return RedirectToAction("Index");
+            }
+        }
+
+        // POST: Team/leave/1
+        public ActionResult Leave(int id)
+        {
+            try
+            {
+                Team team = teamService.GetTeam(id);
+                Profile profile = profileService.GetProfile(User.Identity.Name);
+                team.Profiles = team.Profiles.Where(t => t.Id != profile.Id).ToList();
+                teamService.UpdateTeam(id, team);
+                ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
+                ViewBag.SelectedTeam = teamService.GetTeam(id);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
+                ViewBag.SelectedTeam = teamService.GetTeam(id);
+                return RedirectToAction("Index");
             }
         }
 
         // GET: Team/Edit/5
         public ActionResult Edit(int id)
         {
+            ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
+            ViewBag.SelectedTeam = teamService.GetTeam(id);
             return View();
         }
 
@@ -94,12 +120,18 @@ namespace infTeam.Controllers
         {
             try
             {
-                // TODO: Add update logic here
-
+                Team team = teamService.GetTeam(id);
+                team.Name = collection["Name"];
+                team.Description = collection["Description"];
+                teamService.UpdateTeam(id, team);
+                ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
+                ViewBag.SelectedTeam = teamService.GetTeam(id);
                 return RedirectToAction("Index");
             }
             catch
             {
+                ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
+                ViewBag.SelectedTeam = teamService.GetTeam(id);
                 return View();
             }
         }
@@ -107,17 +139,19 @@ namespace infTeam.Controllers
         // GET: Team/Delete/5
         public ActionResult Delete(int id)
         {
+            ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
+            ViewBag.SelectedTeam = teamService.GetTeam(id);
             return View();
         }
 
         // POST: Team/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, FormCollection c)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                var team = teamService.GetTeam(id);
+                teamService.Remove(team);
                 return RedirectToAction("Index");
             }
             catch

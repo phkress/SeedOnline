@@ -68,8 +68,16 @@
                                 </a>
                             </div>
                         </td>
-                        <td>@team.Description</td>
-                        <td>@team.Profiles.Count Membros</td>
+                        <td>
+                            @team.Description
+                        </td>
+                        <td>
+                            @team.Profiles.Count Membros
+                        </td>
+                        <td class="text-center">
+                            <a class='btn btn-info btn-xs' href="@Url.Action("Edit", "Team", new { id = team.Id })"><span class="glyphicon glyphicon-edit"></span> Editar</a> 
+                            <a href="@Url.Action("Delete", "Team", new { id = team.Id })" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Deletar</a>
+                        </td>
                     </tr>
                 }
             </table>

@@ -110,6 +110,15 @@ namespace Repository
 
         public void Remove(T entity)
         {
+
+            HttpClient infTeamApiClient = getInfTeamApiClient();
+
+            var request = new HttpRequestMessage(HttpMethod.Delete, Uri + Path);
+            request.Content = new StringContent(JsonConvert.SerializeObject(
+                entity, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }
+                ), Encoding.UTF8, "application/json");
+
+            infTeamApiClient.SendAsync(request);
         }
     }
 }

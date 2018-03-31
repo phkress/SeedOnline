@@ -28,14 +28,17 @@ namespace Repository
 
         public IEnumerable<Team> GetAll()
         {
-            return dbcontext.Teams.Include(t => t.Profiles).ToList();
+            return dbcontext.Teams.Include(t => t.Profiles);
         }
 
         public void Update(Team team)
         {
 
-            
+
             var teamToUpdate = dbcontext.Teams.Include(t => t.Profiles).Single(t => t.Id == team.Id);
+            teamToUpdate.Name = team.Name;
+            teamToUpdate.Description = team.Name;
+
 
             var profiles = dbcontext.Profiles.ToList();
             var collectionOfProfileToUpdateTo = profiles.Where(p => team.Profiles.Any(prl => prl.Id == p.Id));

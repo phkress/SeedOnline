@@ -32,5 +32,10 @@ namespace Service
         {
             teamRepository.Add(team);
         }
+
+        public void Remove(Team team)
+        {
+            teamRepository.Remove(team);
+        }
     }
 }

@@ -1,0 +1,91 @@
+﻿@model Model.Team
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container">
+    <div class="row">
+        <!-- ProfileCard-->
+        <div class="col-lg-3">
+            <div class="card hovercard">
+                <div class="cardheader">
+                </div>
+                <div class="avatar">
+                    <img alt="" src="@ViewBag.Profilein.ProfilePhoto">
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <a target="_blank" href="http://scripteden.com/">@ViewBag.ProfileIn.Name</a>
+                    </div>
+                    <div class="desc">@ViewBag.ProfileIn.Role</div>
+                    <div class="desc">@ViewBag.Profilein.Email</div>
+                    <div class="desc"></div>
+                </div>
+                <hr />
+                <div class="info-menu">
+                    <div class="title sub-title">
+                        <a target="_blank" href="http://scripteden.com/">@Html.ActionLink("Equipes", "Index", "Team")</a>
+                    </div>
+                    @foreach (var team in ViewBag.ProfileIn.Teams)
+                    {
+                    <div class="bottom">
+                        <a class="btn btn-sm" href="https://twitter.com/webmaniac">
+                            @team.Name
+                        </a>
+                    </div>
+                    }
+                </div>
+                <div class="info-menu">
+                    <div class="title sub-title">
+                        <a target="_blank" href="http://scripteden.com/">Contatos</a>
+                    </div>
+                    @foreach (var contact in ViewBag.ProfileIn.Contacts)
+                    {
+                    <div class="bottom">
+                        <a class="btn btn-sm" href="https://twitter.com/webmaniac">
+                            @contact.Name
+                        </a>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 contentBloco">
+            <div>
+                <h2>Remover Equipe</h2>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+
+                    <dd>
+                        @ViewBag.SelectedTeam.Name
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+
+                    <dd>
+                        @ViewBag.SelectedTeam.Description
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Remover" class="btn btn-danger" />
+                    </div>
+                }
+            </div>
+            <div style="margin-top: 15px;">
+                @Html.ActionLink("Cancelar", "Index")
+            </div>
+        </div>
+    </div>
+</div>

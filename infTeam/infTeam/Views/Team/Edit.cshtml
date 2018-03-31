@@ -1,7 +1,5 @@
-﻿@model Model.Team
-
-@{
-    ViewBag.Title = "Details";
+﻿@{
+    ViewBag.Title = "Edit";
 }
 
 <div class="container">
@@ -51,46 +49,38 @@
                 </div>
             </div>
         </div>
-        <!-- Equipes -->
-        <div class="col-lg-9 content-block">
-            <div class="contentBloco">
-                <h2>@ViewBag.SelectedTeam.Name</h2>
-                <hr />
-                <p>@ViewBag.SelectedTeam.Description</p>
-                <hr />
-                <table class="table table-striped custab">
-                    <thead>
-                    @if (!ViewBag.ProfileIn.HasTeam(ViewBag.SelectedTeam.Id))
-                    {
-                    <a href="@Url.Action("Enter", "Team", new { id = ViewBag.SelectedTeam.Id })" class="btn btn-success btn-xs pull-right rightButtonsMargin"><b>+</b> Entrar</a>
-                    }
-                    else
-                    {
-                    <a href="@Url.Action("Leave", "Team", new { id = ViewBag.SelectedTeam.Id })" class="btn btn-danger btn-xs pull-right rightButtonsMargin"><b>-</b> Sair</a>
-                    }
-                    <th>Membros</th>
-                    </thead>
-                    @foreach (var profile in ViewBag.SelectedTeam.Profiles)
-                    {
-                        <tr>
-                            <td>
-                                <img src="@profile.ProfilePhoto" />
-                            </td>
-                            <td>
-                                @profile.Name
-                            </td>
-                            <td>
-                                @profile.Role
-                            </td>
-                            <td>
-                                @profile.Email
-                            </td>
-                        </tr>
-                    }
-                </table>
-                <div>
-                    @Html.ActionLink("Voltar", "Index")
+        <!-- Edit -->
+        <div class="col-lg-9 contentBloco">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h2>Editar @ViewBag.SelectedTeam.Name</h2>
+                    <hr />
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label for="nameInput">Nome:</label>
+                            <input id="nameInput" type="text" value="@ViewBag.SelectedTeam.Name" name="Name" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label for="nameInput">Descrição:</label>
+                            <input type="text" value="@ViewBag.SelectedTeam.Description" name="Description" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input type="submit" value="Salvar" class="btn btn-default" />
+                        </div>
+                    </div>
                 </div>
+            }
+            <div>
+                @Html.ActionLink("Voltar", "Index")
             </div>
         </div>
     </div>
@@ -101,4 +91,6 @@
 
 
 
-
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
