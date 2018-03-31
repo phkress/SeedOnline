@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Model;
 using Model.Interface;
 using Repository.Persistence;
+using System.Data.Entity;
 
 namespace Repository
 {
@@ -14,5 +15,13 @@ namespace Repository
         public ProfileRepository(InfTeamApiDBContext context) :base(context)
         {
         }
+
+        public Profile Get(String id)
+        {
+            InfTeamApiDBContext context = new InfTeamApiDBContext();
+            var profile = context.Profiles.Include(p => p.Teams).Where(p => p.Id == id).FirstOrDefault();
+            return profile;
+        }
+
     }
 }

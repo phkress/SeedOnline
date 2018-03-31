@@ -12,10 +12,6 @@ namespace Service
     {
         ProfileRepository profileRepository = new ProfileRepository();
 
-        private Profile nullHandlerProfile(Profile profile)
-        {
-            return profile;
-        }
         public IEnumerable<Profile> GetAll()
         {
             return profileRepository.GetAll();
@@ -25,6 +21,11 @@ namespace Service
         {
             Profile profile = profileRepository.GetProfile(id);
             return profile;
+        }
+
+        public void UpdateProfile(String id, Profile profile)
+        {
+            profileRepository.UpdateProfile(id, profile);
         }
 
         public void CreateNewProfile(Profile profile)

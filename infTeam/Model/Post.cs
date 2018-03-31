@@ -9,7 +9,7 @@ namespace Model
     public class Post
     {
         public int Id { get; set; }
-        public virtual Profile Profile { get; set; }
+        public Profile Profile { get; set; }
         public String Photo { get; set; }
         public String Title { get; set; }
         public String Text { get; set; }

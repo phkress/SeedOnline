@@ -11,7 +11,7 @@ namespace Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        protected readonly DbContext Context;
+        public DbContext Context;
 
         public Repository(DbContext Context)
         {
@@ -28,7 +28,7 @@ namespace Repository
             return Context.Set<T>().Where(predicate);
         }
 
-        public T get(String id)
+        public virtual T Get(int id)
         {
             return Context.Set<T>().Find(id);
         }

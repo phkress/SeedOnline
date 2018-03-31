@@ -11,24 +11,26 @@ using System.Web.Http.Description;
 using Model;
 using Repository.Persistence;
 using Repository;
+using Service;
 
 namespace InfTeamApi.Controllers
 {
     public class ProfilesController : ApiController
     {
-        ModelUOW db = new ModelUOW(new InfTeamApiDBContext());
+        ProfileService profileService = new ProfileService();
 
         // GET: api/Profiles
         public IEnumerable<Profile> GetProfiles()
         {
-            return db.Profiles.GetAll();
+            return profileService.GetProfiles();
         }
 
         // GET: api/Profiles/5
         [ResponseType(typeof(Profile))]
         public IHttpActionResult GetProfile(String id)
         {
-            Profile profile = db.Profiles.get(id);
+            Profile profile = profileService.GetProfile(id);
+
             if (profile == null)
             {
                 return NotFound();
@@ -51,18 +53,17 @@ namespace InfTeamApi.Controllers
                 return BadRequest();
             }
 
-            db.Profiles.Update(profile);
+           
+            var result = profileService.UpdateProfile(profile);
 
-            try
+            if (result)
             {
-                db.Complete();
+                return StatusCode(HttpStatusCode.NoContent);
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
                 return NotFound();
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            }            
         }
 
         // POST: api/Profiles
@@ -74,8 +75,7 @@ namespace InfTeamApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Profiles.Add(profile);
-            db.Complete();
+            profileService.Add(profile);
 
             return CreatedAtRoute("DefaultApi", new { id = profile.Id }, profile);
         }
@@ -84,25 +84,15 @@ namespace InfTeamApi.Controllers
         [ResponseType(typeof(Profile))]
         public IHttpActionResult DeleteProfile(String id)
         {
-            Profile profile = db.Profiles.get(id);
+            Profile profile = profileService.GetProfile(id);
+
             if (profile == null)
             {
                 return NotFound();
             }
 
-            db.Profiles.Remove(profile);
-            db.Complete();
-
+            profileService.Delete(profile);
             return Ok(profile);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

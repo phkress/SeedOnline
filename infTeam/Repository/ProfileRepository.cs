@@ -24,6 +24,12 @@ namespace Repository
             return profile;
         }
 
+        public void UpdateProfile(String id, Profile profile)
+        {
+            repositoryComposer.Path = "/api/profiles/" + id;
+            repositoryComposer.Update(profile);
+        }
+
         public void Add(Profile profile)
         {
             repositoryComposer.Path = "/api/profiles";

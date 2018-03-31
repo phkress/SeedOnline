@@ -12,6 +12,8 @@ namespace infTeam.Controllers
 {
     public class HomeController : Controller
     {
+        ProfileService profileService = new ProfileService();
+
         private void StoreUserId()
         {
             if (User.Identity.Name != null || User.Identity.Name != "")
@@ -25,13 +27,13 @@ namespace infTeam.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("In");
         }
 
         [Authorize]
         public ActionResult In()
         {
-            ProfileService profileService = new ProfileService();
+            
             Profile profile = profileService.GetProfile(User.Identity.Name);
             ViewBag.ProfileIn = profile;
             ViewBag.Message = "Your application description page.";

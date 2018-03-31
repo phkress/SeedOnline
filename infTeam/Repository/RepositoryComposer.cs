@@ -98,6 +98,14 @@ namespace Repository
 
         public void Update(T entity)
         {
+            HttpClient infTeamApiClient = getInfTeamApiClient();
+
+            var stringContent = new StringContent(JsonConvert.SerializeObject(
+                entity, Formatting.Indented, new JsonSerializerSettings{ ReferenceLoopHandling = ReferenceLoopHandling.Ignore}
+                ), Encoding.UTF8, "application/json");
+
+            var response = infTeamApiClient.PutAsync(Path, stringContent);
+            
         }
 
         public void Remove(T entity)

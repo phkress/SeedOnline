@@ -230,6 +230,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfilesController.cs" />
+    <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -323,6 +324,10 @@
     <ProjectReference Include="..\Repository\Repository.csproj">
       <Project>{9aa6911f-9f5c-464d-a8ef-ff3824dd0e70}</Project>
       <Name>Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{ac504fd9-1186-42f1-95bb-6f279ab720b3}</Project>
+      <Name>Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

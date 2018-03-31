@@ -1,0 +1,101 @@
+﻿@model Model.Team
+
+@{
+    ViewBag.Title = "Nova Equipe";
+}
+
+<div class="container">
+    <div class="row">
+        <!-- ProfileCard-->
+        <div class="col-lg-3">
+            <div class="card hovercard">
+                <div class="cardheader">
+                </div>
+                <div class="avatar">
+                    <img alt="" src="@ViewBag.Profilein.ProfilePhoto">
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <a target="_blank" href="http://scripteden.com/">@ViewBag.ProfileIn.Name</a>
+                    </div>
+                    <div class="desc">@ViewBag.ProfileIn.Role</div>
+                    <div class="desc">@ViewBag.Profilein.Email</div>
+                    <div class="desc"></div>
+                </div>
+                <hr />
+                <div class="info-menu">
+                    <div class="title sub-title">
+                        <a target="_blank" href="http://scripteden.com/">@Html.ActionLink("Equipes", "Index", "Team")</a>
+                    </div>
+                    @foreach (var team in @ViewBag.ProfileIn.Teams)
+                    {
+                        <div class="bottom">
+                            <a class="btn btn-sm" href="https://twitter.com/webmaniac">
+                                @team.Name
+                            </a>
+                        </div>
+                    }
+                </div>
+                <div class="info-menu">
+                    <div class="title sub-title">
+                        <a target="_blank" href="http://scripteden.com/">Contatos</a>
+                    </div>
+                    @foreach (var contact in @ViewBag.ProfileIn.Contacts)
+                    {
+                        <div class="bottom">
+                            <a class="btn btn-sm" href="https://twitter.com/webmaniac">
+                                @contact.Name
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Criar Equipe -->
+        <div class="col-lg-9 content-block">
+            <h2>@ViewBag.Title</h2>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, "Nome", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Description, "Descrição", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Criar" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink("Cancelar", "Index")
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
