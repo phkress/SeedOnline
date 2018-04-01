@@ -269,3 +269,23 @@
     height: 32px;
     line-height: 18px;
 }
+
+.menu-button {
+    overflow: auto;
+    text-align: center;
+    padding: 5px;
+    width: 100%;
+}
+
+.menu-button > a {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.menu-button > a:first-child {
+    margin-top: 10px;
+}
+
+.menu-info-block{
+    margin-bottom: 20px;
+}

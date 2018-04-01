@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "In";
+}
+
+<div class="container">
+    <div class="row">
+        <!-- ProfileCard-->
+        @Html.Partial("ProfileCol")
+        <!-- In -->
+        <div class="col-lg-9 contentBloco">
+            <h2 class="header-with-edit">
+                @ViewBag.SelectedTeam.Name
+            </h2>
+            <div>
+                <a href="@Url.Action("Edit", "Team", new { id = ViewBag.SelectedTeam.Id })" class="btn btn-primary btn-xs rightButtonsMargin"><span class="glyphicon glyphicon-pencil"></span> Editar Grupo</a>
+                <a href="@Url.Action("Leave", "Team", new { id = ViewBag.SelectedTeam.Id })" class="btn btn-danger btn-xs rightButtonsMargin"><b>-</b> Sair</a>
+            </div>
+            <hr />
+                <p>@ViewBag.SelectedTeam.Description</p>
+            <hr  />
+            <!-- textarea -->
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <div class="form-group col-lg-12">
+                        <textarea class="form-control" rows="3" id="comment" name="postTextarea" placeholder="Menssagem para @ViewBag.SelectedTeam.Name"></textarea>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <input type="submit" value="Postar" class="btn btn-primary pull-right" />
+                    </div>
+                </div>
+            }
+            <!-- Posts -->
+            <hr />
+            
+            <table class="table table-striped custab">
+                <thead>
+                </thead>
+                @foreach (var team in ViewBag.SelectedTeam.Posts)
+                {
+                    <tr>
+                        <td>
+
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

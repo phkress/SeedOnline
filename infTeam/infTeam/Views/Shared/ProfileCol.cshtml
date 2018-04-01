@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "ProfileCol";
+}
+
+@if (Request.IsAuthenticated)
+{
+    <!-- ProfileCard-->
+    <div class="col-lg-3">
+        <div class="card hovercard">
+            <div class="cardheader">
+            </div>
+            <div class="avatar">
+                <img alt="" src="@ViewBag.Profilein.ProfilePhoto">
+            </div>
+            <div class="info">
+                <div class="title">
+                    <a target="_blank" href="http://scripteden.com/">@ViewBag.ProfileIn.Name</a>
+                </div>
+                <div class="desc">@ViewBag.ProfileIn.Role</div>
+                <div class="desc">@ViewBag.Profilein.Email</div>
+                <div class="desc"></div>
+            </div>
+            <hr />
+            <div class="info-menu menu-info-block">
+                <div class="title sub-title">
+                    Equipes
+                </div>
+                <div class="menu-button">
+                    @foreach (var team in ViewBag.ProfileIn.Teams)
+                    {
+                        <a href="@Url.Action("In", "Team", new { id = team.Id})" class="btn btn-sm btn-primary col-lg-10 text-center">
+                            @team.Name
+                        </a>
+                    }
+                </div>
+                <a href="@Url.Action("Index", "Team")">
+                    Ver Todas
+                </a>
+            </div>
+            <hr />
+            <div class="info-menu menu-info-block">
+                <div class="title sub-title">
+                    Contatos
+                </div>
+                @foreach (var contact in ViewBag.ProfileIn.Contacts)
+                {
+                    <div class="bottom">
+                        <a class="btn btn-sm" href="https://twitter.com/webmaniac">
+                            @contact.Name
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}

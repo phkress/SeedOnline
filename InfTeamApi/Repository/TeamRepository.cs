@@ -37,7 +37,7 @@ namespace Repository
 
             var teamToUpdate = dbcontext.Teams.Include(t => t.Profiles).Single(t => t.Id == team.Id);
             teamToUpdate.Name = team.Name;
-            teamToUpdate.Description = team.Name;
+            teamToUpdate.Description = team.Description;
 
 
             var profiles = dbcontext.Profiles.ToList();

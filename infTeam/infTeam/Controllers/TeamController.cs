@@ -25,6 +25,45 @@ namespace infTeam.Controllers
             return View();
         }
 
+        public ActionResult In(int id)
+        {
+            Profile profile = profileService.GetProfile(User.Identity.Name);
+            if (!profile.Teams.Any(t => t.Id == id))
+            {
+                return RedirectToAction("Index", "Team");
+            }
+
+            ViewBag.SelectedTeam = teamService.GetTeam(id);
+            ViewBag.ProfileIn = profile;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult In(int id, FormCollection collection)
+        {
+            Profile profile = profileService.GetProfile(User.Identity.Name);
+            if (!profile.Teams.Any(t => t.Id == id))
+            {
+                return RedirectToAction("Index", "Team");
+            }
+
+            Team team = teamService.GetTeam(id);
+            Post post = new Post()
+            {
+                Photo = "",
+                Text = collection["postTextarea"],
+                Date = DateTime.Now,
+                Profile = profile
+            };
+            team.Posts.Add(post);
+            teamService.UpdateTeam(id, team);
+            
+            ViewBag.SelectedTeam = teamService.GetTeam(id);
+            ViewBag.ProfileIn = profile;
+
+            return RedirectToAction("In", "Team", new { id = id });
+        }
+
         // GET: Team/Details/5
         public ActionResult Details(int id)
         {
@@ -126,7 +165,7 @@ namespace infTeam.Controllers
                 teamService.UpdateTeam(id, team);
                 ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
                 ViewBag.SelectedTeam = teamService.GetTeam(id);
-                return RedirectToAction("Index");
+                return RedirectToAction("In", "Team", new { id = id});
             }
             catch
             {
