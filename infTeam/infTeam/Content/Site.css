@@ -46,3 +46,24 @@ textarea {
     resize: none;
     width: 100%;
 }
+
+.link-100{
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+}
+
+.custab td {
+    padding-bottom: 5px;
+}
+
+.contact-buttom-index {
+    overflow: auto;
+}
+.table th, .table td {
+    border-top: none !important;
+}
+
+.contact-buttom-index > div {
+    padding-right: 60px;
+}

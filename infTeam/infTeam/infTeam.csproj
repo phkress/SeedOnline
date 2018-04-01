@@ -269,10 +269,10 @@
     <Content Include="Views\Team\Edit.cshtml" />
     <Content Include="Views\Team\In.cshtml" />
     <Content Include="Views\Shared\ProfileCol.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Profile\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

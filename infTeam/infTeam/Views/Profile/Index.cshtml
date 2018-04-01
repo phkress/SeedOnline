@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        @Html.Partial("ProfileCol")
+        <!-- Equipes -->
+        <div class="col-lg-9 contentBloco">
+            <h2>Contatos</h2>
+            <hr />
+            <table class="table">
+                <thead>
+                </thead>
+                @foreach (var profile in ViewBag.AllProfiles)
+                {
+
+                    <tr class="tr-mine">
+                        <td>
+                            <a class="btn btn-default btn-sm link-100" href="@Url.Action("Details/" + profile.Id)">
+                                <div class="contact-buttom-index">
+                                    <div class="profile-picture-box pull-left">
+                                        <img src="@profile.ProfilePhoto" alt="User Avatar" class="img-circle img-fluid">                                        
+                                    </div>
+                                    <div class="pull-left">
+                                        <strong>@profile.Name</strong>
+                                        <div>@profile.Email</div>                                        
+                                    </div>
+                                    <div class="pull-left">
+                                        @profile.Role
+                                    </div>
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

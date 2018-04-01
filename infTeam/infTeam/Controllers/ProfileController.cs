@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Service;
+using Model;
 
 namespace infTeam.Controllers
 {
     public class ProfileController : Controller
     {
         // GET: Profile
-        public ActionResult Index(int id)
+        public ActionResult Index()
         {
+            ProfileService profileService = new ProfileService();
+            ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
+            ViewBag.AllProfiles = profileService.GetAll();
             return View();
         }
 
