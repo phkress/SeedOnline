@@ -19,15 +19,12 @@ namespace Repository
 
         public ITeam Teams { get; private set; }
 
-        public ITodo Todos { get; private set; }
-
         public ModelUOW(InfTeamApiDBContext context)
         {
             _context = context;
             Profiles = new ProfileRepository(_context);
             Posts = new PostRepository(_context);
             Teams = new TeamRepository(_context);
-            Todos = new TodoRepository(_context);
         }        
 
         public int Complete()

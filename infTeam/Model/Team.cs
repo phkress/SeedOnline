@@ -13,6 +13,5 @@ namespace Model
         public String Description { get; set; }
         public ICollection<Profile> Profiles { get; set; }
         public ICollection<Post> Posts { get; set; }
-        public ICollection<Todo> Todos { get; set; }
     }
 }

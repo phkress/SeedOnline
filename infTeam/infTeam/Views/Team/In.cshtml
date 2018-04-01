@@ -17,8 +17,8 @@
                 <a href="@Url.Action("Leave", "Team", new { id = ViewBag.SelectedTeam.Id })" class="btn btn-danger btn-xs rightButtonsMargin"><b>-</b> Sair</a>
             </div>
             <hr />
-                <p>@ViewBag.SelectedTeam.Description</p>
-            <hr  />
+            <p>@ViewBag.SelectedTeam.Description</p>
+            <hr />
             <!-- textarea -->
             @using (Html.BeginForm())
             {
@@ -35,19 +35,49 @@
             }
             <!-- Posts -->
             <hr />
-            
-            <table class="table table-striped custab">
-                <thead>
-                </thead>
-                @foreach (var team in ViewBag.SelectedTeam.Posts)
-                {
-                    <tr>
-                        <td>
 
-                        </td>
-                    </tr>
-                }
-            </table>
+
+            <div class="panel-collapse collapse in" id="collapseOne">
+                <div class="panel-body">
+                    <ul class="chat">
+                        @foreach (var post in ViewBag.SelectedTeam.Posts)
+                        {
+                            <li class="right clearfix col-lg-12">
+                                <div class="inner-chat row">
+                                    <div class="chat-body clearfix chat-mine">
+                                        <div class="header header-chat">
+                                            <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>@post.Date</small>
+                                        </div>
+                                        <p>
+                                            @post.Text
+                                        </p>
+                                    </div>
+                                    <hr />
+                                    @if (post.Profile == null)
+                                    {
+                                        <div class="chat-img chat-profile">
+                                            <div class="profile-info-box pull-right">
+                                                <strong class="pull-right primary-font" style="color:grey;">@post.ProfileNameStored</strong>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                    <div class="chat-img chat-profile">                                        
+                                        <div class="profile-info-box pull-right">
+                                            <strong class="pull-right primary-font">@post.Profile.Name</strong>
+                                        </div>
+                                        <div class="profile-picture-box pull-right">
+                                            <img src="@post.Profile.ProfilePhoto" alt="User Avatar" class="img-circle img-fluid pull-right">
+                                        </div>
+                                    </div>
+                                    }
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>

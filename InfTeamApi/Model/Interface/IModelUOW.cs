@@ -14,8 +14,6 @@ namespace Model.Interface
 
         ITeam Teams { get; }
 
-        ITodo Todos { get; }
-
         int Complete();
     }
 }

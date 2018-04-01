@@ -86,7 +86,8 @@ namespace Repository
 
                 var res = response.Content.ReadAsStringAsync().Result;
 
-                var obj = JsonConvert.DeserializeObject<T>(res, getJsonSettings());
+                var obj = JsonConvert.DeserializeObject<T>(res, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }
+                );
 
                 return obj;
             }

@@ -17,13 +17,11 @@ namespace Model
         public String Description { get; set; }
         public virtual ICollection<Profile> Profiles { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
-        public virtual ICollection<Todo> Todos { get; set; }
 
         public Team()
         {
             Profiles = new HashSet<Profile>();
             Posts = new HashSet<Post>();
-            Todos = new HashSet<Todo>();
         }
     }
 }

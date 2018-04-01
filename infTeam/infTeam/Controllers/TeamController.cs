@@ -53,7 +53,8 @@ namespace infTeam.Controllers
                 Photo = "",
                 Text = collection["postTextarea"],
                 Date = DateTime.Now,
-                Profile = profile
+                Profile = profile,
+                ProfileNameStored = profile.Name
             };
             team.Posts.Add(post);
             teamService.UpdateTeam(id, team);

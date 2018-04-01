@@ -167,7 +167,7 @@ namespace infTeam.Controllers
                         Name = model.Name,
                         Email = model.Email,
                         Role = model.Role,
-                        ProfilePhoto = "https://i.imgur.com/U7ga9LP.jpeg"
+                        ProfilePhoto = "https://i.imgur.com/U7ga9LP.jpeg" //!!!!!!!!!!!!!!!! TROCAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     };
 
                 profileService.CreateNewProfile(profile);
