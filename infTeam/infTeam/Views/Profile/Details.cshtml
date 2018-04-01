@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+    <div class="row">
+        <!-- ProfileCard-->
+        @Html.Partial("ProfileCol")
+        <!-- Equipe Detail -->
+        <div class="col-lg-9 content-block">
+            <div class="contentBloco">
+                <h2>@ViewBag.ProfileDetail.Name</h2>
+                <p>@ViewBag.ProfileDetail.Role</p>
+                <hr />
+                <table class="table table-striped custab">
+                    <thead>
+                        @if (!ViewBag.ProfileIn.HasContact(ViewBag.ProfileDetail.Id))
+                        {
+                            <a href="@Url.Action("AdicionarContato", "Profile", new { id = ViewBag.ProfileDetail.Id + "/" })" class="btn btn-success btn-xs pull-right rightButtonsMargin"><b>+</b> Adicionar aos meus contatos</a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("ExcluirContato", "Profile", new { id = ViewBag.ProfileDetail.Id + "/" })" class="btn btn-danger btn-xs pull-right rightButtonsMargin"><b>-</b> Excluir dos meus contatos</a>
+                        }
+                    <th>Equipes de @ViewBag.ProfileDetail.Name</th>
+                    </thead>
+                    @foreach (var team in ViewBag.ProfileDetail.Teams)
+                    {
+                        <tr class="tr-mine">
+                            <td>
+                                <a class="wrap-btn btn-default link-100" href="@Url.Action("Details/" + team.Id, "Team")">
+                                    <div class="contact-buttom-index row text-left">
+                                        <div class="pull-left col-lg-3">
+                                            <strong>@team.Name</strong>
+                                        </div>
+                                        <div class="pull-left col-lg-5">
+                                            @team.Description
+                                        </div>
+                                        <div class="pull-left col-lg-4">
+                                            @team.Profiles.Count Membros
+                                        </div>
+                                    </div>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <div>
+                    @Html.ActionLink("Voltar", "Index", "Profile")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

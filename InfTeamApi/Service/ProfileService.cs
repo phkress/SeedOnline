@@ -41,11 +41,9 @@ namespace Service
 
         public bool UpdateProfile(Profile profile)
         {
-            db.Profiles.Update(profile);
-
             try
             {
-                db.Complete();
+                db.Profiles.Update(profile);
             }
             catch (Exception)
             {

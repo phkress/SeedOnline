@@ -15,10 +15,11 @@
                 </thead>
                 @foreach (var profile in ViewBag.AllProfiles)
                 {
-
+                    if(profile.Id != ViewBag.ProfileIn.Id)
+                    {
                     <tr class="tr-mine">
                         <td>
-                            <a class="btn btn-default btn-sm link-100" href="@Url.Action("Details/" + profile.Id)">
+                            <a class="btn btn-default btn-sm link-100" href="@Url.Action("Details", "Profile", new { id = profile.Id + "/" })">
                                 <div class="contact-buttom-index">
                                     <div class="profile-picture-box pull-left">
                                         <img src="@profile.ProfilePhoto" alt="User Avatar" class="img-circle img-fluid">                                        
@@ -28,12 +29,19 @@
                                         <div>@profile.Email</div>                                        
                                     </div>
                                     <div class="pull-left">
-                                        @profile.Role
+                                        <strong>Cargo</strong>
+                                        <p>@profile.Role</p>
                                     </div>
+                                    @if(ViewBag.ProfileIn.HasContact(profile.Id))
+                                    {
+                                    <div class="adicionadoAlready">
+                                        <span class="glyphicon glyphicon-ok" style="color:green;"></span><span style="color:green;">Meu Contato</span>
+                                    </div>
+                                    }
                                 </div>
                             </a>
                         </td>
-                    </tr>
+                    </tr>}
                 }
             </table>
         </div>

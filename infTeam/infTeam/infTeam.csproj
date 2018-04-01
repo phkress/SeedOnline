@@ -270,6 +270,7 @@
     <Content Include="Views\Team\In.cshtml" />
     <Content Include="Views\Shared\ProfileCol.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

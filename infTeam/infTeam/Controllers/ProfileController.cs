@@ -10,19 +10,44 @@ namespace infTeam.Controllers
 {
     public class ProfileController : Controller
     {
+        ProfileService profileService = new ProfileService();
+
         // GET: Profile
         public ActionResult Index()
         {
-            ProfileService profileService = new ProfileService();
+            
             ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
             ViewBag.AllProfiles = profileService.GetAll();
             return View();
         }
 
         // GET: Profile/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(String id)
         {
+            ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
+            ViewBag.ProfileDetail = profileService.GetProfile(id);
             return View();
+        }
+
+        public ActionResult AdicionarContato(String id)
+        {
+            try
+            {
+                Profile profile = profileService.GetProfile(User.Identity.Name);
+                Profile profileToAdd = profileService.GetProfile(id);
+                profile.Contacts.Add(profileToAdd);
+                profileService.UpdateProfile(profile.Id, profile);
+                ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
+                ViewBag.AllProfiles = profileService.GetAll();
+                return RedirectToAction("Index", "Profile");
+            }
+            catch
+            {
+                ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
+                ViewBag.AllProfiles = profileService.GetAll();
+                return RedirectToAction("Index", "Profile");
+            }
+
         }
 
         // GET: Profile/Create

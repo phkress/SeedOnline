@@ -60,10 +60,35 @@ textarea {
 .contact-buttom-index {
     overflow: auto;
 }
-.table th, .table td {
-    border-top: none !important;
+
+.wrap-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: normal;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid Gray;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.wrap-btn:hover {
+    text-decoration: none;
 }
 
 .contact-buttom-index > div {
     padding-right: 60px;
+}
+
+.adicionadoAlready > span{
+    padding-right: 10px;
 }

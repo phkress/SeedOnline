@@ -29,5 +29,20 @@ namespace Repository
             return dbcontext.Profiles.Include(p => p.Teams).Include(p => p.Contacts);
         }
 
+        public void Update(Profile profile)
+        {
+            var ProfileToUpdate = dbcontext.Profiles.Include(p => p.Contacts).Include(p => p.Teams).Single(p => p.Id == profile.Id);
+            ProfileToUpdate.Name = profile.Name;
+            ProfileToUpdate.Role = profile.Role;
+
+            var profiles = dbcontext.Profiles.ToList();
+            var collectionOfProfileToUpdateTo = profiles.Where(p => profile.Contacts.Any(prl => prl.Id == p.Id));
+            ProfileToUpdate.Contacts.Clear();
+            foreach (var newProfile in collectionOfProfileToUpdateTo)
+            {
+                ProfileToUpdate.Contacts.Add(newProfile);
+            }
+            dbcontext.SaveChanges();
+        }
     }
 }

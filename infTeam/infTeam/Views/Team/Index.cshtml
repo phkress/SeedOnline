@@ -11,28 +11,42 @@
             <h2>Equipes</h2>
             <hr />
             <a href="@Url.Action("Create")" class="btn btn-primary btn-xs pull-right rightButtonsMargin"><b>+</b> Adicionar nova Equipe</a>
-            <table class="table table-striped custab">
+            <table class="table">
                 <thead>
                 </thead>
                 @foreach (var team in ViewBag.AllTeams)
                 {
-                    <tr>
+                    <tr class="tr-mine">
                         <td>
-                            <div class="bottom btn btn-sm">
-                                <a class="btn btn-success btn-sm" href="@Url.Action("Details/" + team.Id)">
-                                    @team.Name
-                                </a>
+                            <a class="wrap-btn btn-default link-100" href="@Url.Action("Details/" + team.Id)">
+                                <div class="contact-buttom-index row text-left">
+                                    <div class="pull-left col-lg-3">
+                                        <strong>@team.Name</strong>
+                                    </div>
+                                    <div class="pull-left col-lg-5">
+                                        @team.Description
+                                    </div>
+                                    <div class="pull-left col-lg-4">
+                                        <div>
+                                            @team.Profiles.Count Membros
+                                        </div>
+                                        @if (ViewBag.ProfileIn.HasTeam(team.Id))
+                                        {
+                                            <div class="adicionadoAlready">
+                                                <span class="glyphicon glyphicon-ok" style="color:green;"></span><span style="color:green;">Minha Equipe</span>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </a>
+                        </td>
+                        <td class="row">
+                            <div class="col-lg-6">
+                                <a class='btn btn-info btn-xs pull-left' href="@Url.Action("Edit", "Team", new { id = team.Id })"><span class="glyphicon glyphicon-edit"></span></a>
                             </div>
-                        </td>
-                        <td>
-                            @team.Description
-                        </td>
-                        <td>
-                            @team.Profiles.Count Membros
-                        </td>
-                        <td class="text-center">
-                            <a class='btn btn-info btn-xs' href="@Url.Action("Edit", "Team", new { id = team.Id })"><span class="glyphicon glyphicon-edit"></span> Editar</a> 
-                            <a href="@Url.Action("Delete", "Team", new { id = team.Id })" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Deletar</a>
+                            <div class="col-lg-6">
+                                <a href="@Url.Action("Delete", "Team", new { id = team.Id })" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                            </div>
                         </td>
                     </tr>
                 }

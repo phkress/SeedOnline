@@ -21,6 +21,11 @@ namespace Model
         {
            return this.Teams.ToList().Any(t => t.Id == id);
         }
+        public bool HasContact(String id)
+        {
+            return this.Contacts.ToList().Any(c => c.Id == id);
+        }
+
     }
 
 }
