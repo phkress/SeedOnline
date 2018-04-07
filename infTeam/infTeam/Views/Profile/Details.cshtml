@@ -21,7 +21,7 @@
                         }
                         else
                         {
-                            <a href="@Url.Action("ExcluirContato", "Profile", new { id = ViewBag.ProfileDetail.Id + "/" })" class="btn btn-danger btn-xs pull-right rightButtonsMargin"><b>-</b> Excluir dos meus contatos</a>
+                            <a href="@Url.Action("RemoverContato", "Profile", new { id = ViewBag.ProfileDetail.Id + "/" })" class="btn btn-danger btn-xs pull-right rightButtonsMargin"><b>-</b> Excluir dos meus contatos</a>
                         }
                     <th>Equipes de @ViewBag.ProfileDetail.Name</th>
                     </thead>

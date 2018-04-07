@@ -23,9 +23,17 @@ namespace Service
             return profile;
         }
 
-        public void UpdateProfile(String id, Profile profile)
+        public void AddContact(String id, Profile profile)
         {
-            profileRepository.UpdateProfile(id, profile);
+            Profile profileToAdd = GetProfile(id);
+            profile.Contacts.Add(profileToAdd);
+            profileRepository.UpdateProfile(profile.Id, profile);
+        }
+
+        public void RemoveContact(String id, Profile profile)
+        {
+            profile.Contacts = profile.Contacts.Where(c => c.Id != id).ToList();
+            profileRepository.UpdateProfile(profile.Id, profile);
         }
 
         public void CreateNewProfile(Profile profile)

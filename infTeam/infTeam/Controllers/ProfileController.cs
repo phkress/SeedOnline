@@ -29,14 +29,31 @@ namespace infTeam.Controllers
             return View();
         }
 
-        public ActionResult AdicionarContato(String id)
+        public RedirectToRouteResult AdicionarContato(String id)
         {
             try
             {
                 Profile profile = profileService.GetProfile(User.Identity.Name);
-                Profile profileToAdd = profileService.GetProfile(id);
-                profile.Contacts.Add(profileToAdd);
-                profileService.UpdateProfile(profile.Id, profile);
+                profileService.AddContact(id, profile);
+                ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
+                ViewBag.AllProfiles = profileService.GetAll();
+                return RedirectToAction("Index", "Profile");
+            }
+            catch
+            {
+                ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
+                ViewBag.AllProfiles = profileService.GetAll();
+                return RedirectToAction("Index", "Profile");
+            }
+
+        }
+
+        public RedirectToRouteResult RemoverContato(String id)
+        {
+            try
+            {
+                Profile profile = profileService.GetProfile(User.Identity.Name);
+                profileService.RemoveContact(id, profile);
                 ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
                 ViewBag.AllProfiles = profileService.GetAll();
                 return RedirectToAction("Index", "Profile");
