@@ -17,5 +17,6 @@ namespace Repository.Persistence
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<Menssage> Menssages { get; set; }
     }
 }

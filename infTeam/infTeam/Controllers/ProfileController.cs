@@ -73,6 +73,24 @@ namespace infTeam.Controllers
 
         }
 
+        public RedirectToRouteResult SendMenssage(FormCollection col)
+        {
+            var formId = col["id"];
+            var text = col["postTextarea"];
+            Profile profile = profileService.GetProfile(User.Identity.Name);
+            Profile profileToSend = profileService.GetProfile(formId);
+            var menssage = new Menssage()
+            {
+                Text = text,
+                Date = DateTime.Now,
+                Profile = profile,
+                ProfileNameStored = profile.Name
+            };
+            profileToSend.Menssages.Add(menssage);
+            profileService.SendMenssage(formId, profileToSend);
+            return RedirectToAction("Details", "Profile", new { id = formId + "/"});
+        }
+
         public RedirectToRouteResult RemoverContato(String id)
         {
             try

@@ -52,6 +52,7 @@
     <Compile Include="Interface\IRepository.cs" />
     <Compile Include="Interface\IModelUOW.cs" />
     <Compile Include="Interface\ITeam.cs" />
+    <Compile Include="Menssage.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

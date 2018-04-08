@@ -15,6 +15,7 @@ namespace Model
         public String Role { get; set; }
         public ICollection<Team> Teams { get; set; }
         public ICollection<Profile> Contacts { get; set; }
+        public virtual ICollection<Menssage> Menssages { get; set; }
 
 
         public bool HasTeam(int id)

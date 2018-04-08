@@ -96,3 +96,7 @@ textarea {
 .buscar {
     margin-bottom: 20px;
 }
+
+.pull-left {
+    padding: 5px;
+}
