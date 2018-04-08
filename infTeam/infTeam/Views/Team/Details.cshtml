@@ -17,36 +17,47 @@
                 <hr />
                 <table class="table table-striped custab">
                     <thead>
-                    @if (!ViewBag.ProfileIn.HasTeam(ViewBag.SelectedTeam.Id))
-                    {
-                    <a href="@Url.Action("Enter", "Team", new { id = ViewBag.SelectedTeam.Id })" class="btn btn-success btn-xs pull-right rightButtonsMargin"><b>+</b> Entrar</a>
-                    }
-                    else
-                    {
-                    <a href="@Url.Action("Leave", "Team", new { id = ViewBag.SelectedTeam.Id })" class="btn btn-danger btn-xs pull-right rightButtonsMargin"><b>-</b> Sair</a>
-                    }
+                        @if (!ViewBag.ProfileIn.HasTeam(ViewBag.SelectedTeam.Id))
+                        {
+                            <a href="@Url.Action("Enter", "Team", new { id = ViewBag.SelectedTeam.Id })" class="btn btn-success btn-xs pull-right rightButtonsMargin"><b>+</b> Entrar</a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Leave", "Team", new { id = ViewBag.SelectedTeam.Id })" class="btn btn-danger btn-xs pull-right rightButtonsMargin"><b>-</b> Sair</a>
+                        }
                     <th>Membros</th>
                     </thead>
                     @foreach (var profile in ViewBag.SelectedTeam.Profiles)
                     {
-                        <tr>
+                        <tr class="tr-mine">
                             <td>
-                                <img src="@profile.ProfilePhoto" />
-                            </td>
-                            <td>
-                                @profile.Name
-                            </td>
-                            <td>
-                                @profile.Role
-                            </td>
-                            <td>
-                                @profile.Email
+                                <a class="btn btn-default btn-sm link-100" href="@Url.Action("Details", "Profile", new { id = profile.Id + "/" })">
+                                    <div class="contact-buttom-index">
+                                        <div class="profile-picture-box pull-left">
+                                            <img src="@profile.ProfilePhoto" alt="User Avatar" class="img-circle img-fluid">
+                                        </div>
+                                        <div class="pull-left">
+                                            <strong>@profile.Name</strong>
+                                            <div>@profile.Email</div>
+                                        </div>
+                                        <div class="pull-left">
+                                            <strong>Cargo</strong>
+                                            <p>@profile.Role</p>
+                                        </div>
+                                        @if (ViewBag.ProfileIn.HasContact(profile.Id))
+                                        {
+                                            <div class="adicionadoAlready">
+                                                <span class="glyphicon glyphicon-ok" style="color:green;"></span><span style="color:green;">Meu Contato</span>
+                                            </div>
+                                        }
+                                    </div>
+                                </a>
                             </td>
                         </tr>
                     }
                 </table>
                 <div>
-                    @Html.ActionLink("Voltar", "Index")
+                    @Html.ActionLink("Voltar", null, null, null, new { href = Request.UrlReferrer })
                 </div>
             </div>
         </div>

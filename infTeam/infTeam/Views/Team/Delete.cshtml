@@ -42,7 +42,7 @@
                 }
             </div>
             <div style="margin-top: 15px;">
-                @Html.ActionLink("Cancelar", "Index")
+                @Html.ActionLink("Cancelar", null, null, null, new { href = Request.UrlReferrer })
             </div>
         </div>
     </div>

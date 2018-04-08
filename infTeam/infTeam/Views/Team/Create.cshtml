@@ -44,7 +44,7 @@
             }
 
             <div>
-                @Html.ActionLink("Cancelar", "Index")
+                @Html.ActionLink("Cancelar", null, null, null, new { href = Request.UrlReferrer })
             </div>
         </div>
     </div>

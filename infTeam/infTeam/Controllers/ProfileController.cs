@@ -15,9 +15,34 @@ namespace infTeam.Controllers
         // GET: Profile
         public ActionResult Index()
         {
-            
+            var result = TempData["searchResult"];
             ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
             ViewBag.AllProfiles = profileService.GetAll();
+            if (TempData["searchResult"] != null)
+            {
+                ViewBag.AllProfiles = result;
+            }
+            ViewBag.Error = TempData["Error"];
+            return View();
+        }
+
+        // POST: Profile
+        public ActionResult SearchContact(FormCollection col)
+        {
+            var result = profileService.SearchContact(col["searchText"]);            
+                TempData["searchResult"] = result;
+                TempData["Error"] = "";
+            if (result.Count() == 0)
+            {
+                TempData["Error"] = "Nenhum resultado.";
+            }                
+            return RedirectToAction("Index", "Profile");
+        }
+
+        public ActionResult MyContacts()
+        {
+
+            ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
             return View();
         }
 

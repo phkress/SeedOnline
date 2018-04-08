@@ -8,8 +8,20 @@
         @Html.Partial("ProfileCol")
         <!-- Equipes -->
         <div class="col-lg-9 contentBloco">
-            <h2>Contatos</h2>
+            <h2>Buscar Contatos</h2>
             <hr />
+            <form class="form-inline col-lg-12 buscar">
+                <div class="form-group">
+                    <input type="text" name="searchText" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="resp" value="Buscar" formaction=@Url.Action("SearchContact") formmethod="post" class="btn btn-primary" />
+                </div>
+                @if(ViewBag.Error != "")
+                {
+                    <span style="color:red";>@ViewBag.Error</span>
+                }
+            </form>
             <table class="table">
                 <thead>
                 </thead>

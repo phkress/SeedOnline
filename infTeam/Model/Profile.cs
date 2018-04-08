@@ -26,6 +26,16 @@ namespace Model
             return this.Contacts.ToList().Any(c => c.Id == id);
         }
 
+        public IEnumerable<Profile> TakeNContacts(int n)
+        {
+            return Contacts.Take(n);
+        }
+
+        public IEnumerable<Team> TakeNTeams(int n)
+        {
+            return Teams.Take(n);
+        }
+
     }
 
 }

@@ -36,6 +36,12 @@ namespace Service
             profileRepository.UpdateProfile(profile.Id, profile);
         }
 
+        public IEnumerable<Profile> SearchContact(String text)
+        {
+            IEnumerable<Profile> profiles = profileRepository.GetAll();
+            return  profiles.Where(p => p.Name.ToLower().Contains(text.ToLower()));
+        }
+
         public void CreateNewProfile(Profile profile)
         {
             profileRepository.Add(profile);

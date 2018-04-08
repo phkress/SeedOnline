@@ -92,3 +92,7 @@ textarea {
 .adicionadoAlready > span{
     padding-right: 10px;
 }
+
+.buscar {
+    margin-bottom: 20px;
+}

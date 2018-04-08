@@ -47,7 +47,7 @@
                     }
                 </table>
                 <div>
-                    @Html.ActionLink("Voltar", "Index", "Profile")
+                    @Html.ActionLink("Voltar", null, null, null, new { href = Request.UrlReferrer })
                 </div>
             </div>
         </div>

@@ -27,27 +27,60 @@
                     Equipes
                 </div>
                 <div class="menu-button">
-                    @foreach (var team in ViewBag.ProfileIn.Teams)
+                    @foreach (var team in ViewBag.ProfileIn.TakeNTeams(5))
                     {
                         <a href="@Url.Action("In", "Team", new { id = team.Id})" class="btn btn-sm btn-primary col-lg-10 text-center">
                             @team.Name
                         </a>
                     }
                 </div>
-                <a href="@Url.Action("Index", "Team")">
-                    Ver Todas
-                </a>
+                @if (ViewBag.ProfileIn.Teams.Count != 0)
+                {
+                <div style="margin-bottom: 10px;">
+                    <a href="@Url.Action("Index", "Team")">
+                        Ver Todas
+                    </a>
+                </div>
+                }
+                <div>
+                    <a href="@Url.Action("Index", "Team")">
+                        Buscar Equipes
+                    </a>
+                </div>
             </div>
             <hr />
             <div class="info-menu menu-info-block">
                 <div class="title sub-title">
                     Contatos
                 </div>
-                @foreach (var contact in ViewBag.ProfileIn.Contacts)
+
+                <table class="table">
+                    <thead>
+                    </thead>
+                    @foreach (var profile in ViewBag.ProfileIn.TakeNContacts(5))
+                    {
+                        <tr class="tr-mine">
+                            <td>
+                                <a class="btn btn-default btn-sm" href="@Url.Action("Details", "Profile", new { id = profile.Id + "/" })">
+                                    <div class="contact-buttom-index row">
+                                        <div class="profile-picture-box col-lg-4">
+                                            <img src="@profile.ProfilePhoto" alt="User Avatar" class="img-circle img-fluid">
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <strong>@profile.Name</strong>
+                                            <div>@profile.Email</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+                @if (ViewBag.ProfileIn.Contacts.Count != 0)
                 {
-                    <div class="bottom">
-                        <a class="btn btn-sm" href="https://twitter.com/webmaniac">
-                            @contact.Name
+                    <div style="margin-bottom: 10px;">
+                        <a href="@Url.Action("MyContacts", "Profile")">
+                            Ver Todos
                         </a>
                     </div>
                 }
