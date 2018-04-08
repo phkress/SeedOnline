@@ -18,7 +18,7 @@ namespace infTeam.Controllers
             var result = TempData["searchResult"];
             ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
             ViewBag.AllProfiles = profileService.GetAll();
-            if (TempData["searchResult"] != null)
+            if (result != null)
             {
                 ViewBag.AllProfiles = result;
             }

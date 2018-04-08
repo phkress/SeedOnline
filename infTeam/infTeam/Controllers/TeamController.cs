@@ -16,12 +16,34 @@ namespace infTeam.Controllers
         // GET: Team
         public ActionResult Index()
         {
-            IEnumerable<Team> teams = teamService.GetAll();
+            var result = TempData["searchResult"];
+            ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
+            ViewBag.AllTeams = teamService.GetAll();
+            if (result != null)
+            {
+                ViewBag.AllTeams = result;
+            }
+            ViewBag.Error = TempData["Error"];
+            return View();
+        }
+
+        // POST: Team
+        public ActionResult SearchContact(FormCollection col)
+        {
+            var result = teamService.SearchContact(col["searchText"]);
+            TempData["searchResult"] = result;
+            TempData["Error"] = "";
+            if (result.Count() == 0)
+            {
+                TempData["Error"] = "Nenhum resultado.";
+            }
+            return RedirectToAction("Index", "Team");
+        }
+
+        public ActionResult MyTeams()
+        {
             Profile profile = profileService.GetProfile(User.Identity.Name);
             ViewBag.ProfileIn = profile;
-            ViewBag.MyTeams = teams.Where(t => profile.Teams.Contains(t));
-            ViewBag.AllTeams = teams.Where(t => !profile.Teams.Contains(t));
-
             return View();
         }
 

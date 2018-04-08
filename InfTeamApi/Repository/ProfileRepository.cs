@@ -35,7 +35,7 @@ namespace Repository
             ProfileToUpdate.Name = profile.Name;
             ProfileToUpdate.Role = profile.Role;
 
-            var profiles = dbcontext.Profiles.ToList();
+            var profiles = dbcontext.Profiles.Include(p => p.Contacts).Include(p => p.Teams).ToList();
             var collectionOfProfileToUpdateTo = profiles.Where(p => profile.Contacts.Any(prl => prl.Id == p.Id));
             ProfileToUpdate.Contacts.Clear();
             foreach (var newProfile in collectionOfProfileToUpdateTo)

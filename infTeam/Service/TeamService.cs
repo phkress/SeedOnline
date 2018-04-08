@@ -23,6 +23,12 @@ namespace Service
             return team;
         }
 
+        public IEnumerable<Team> SearchContact(String text)
+        {
+            IEnumerable<Team> team = teamRepository.GetAll();
+            return team.Where(t => t.Name.ToLower().Contains(text.ToLower()));
+        }
+
         public void UpdateTeam(int id, Team team)
         {
             teamRepository.UpdateTeam(id, team);
