@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        @Html.Partial("ProfileCol")
+        <!-- Equipes -->
+        <div class="col-lg-9 contentBloco">
+            <h2>Mensagens</h2>
+            <hr />
+            <div class="panel-collapse collapse in" id="collapseOne">
+                <div class="panel-body">
+                    <ul class="chat">
+                        @foreach (var post in ViewBag.ProfileIn.MsgOrderByDate())
+                        {
+                            <li class="right clearfix col-lg-12">
+                                <div class="inner-chat row">
+                                    <div class="chat-body clearfix chat-mine">
+                                        <div class="header header-chat">
+                                            <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>@post.Date</small>
+                                        </div>
+                                        <p>
+                                            @post.Text
+                                        </p>
+                                    </div>
+                                    <hr />
+                                    <div class="chat-img chat-profile">
+                                        <div class="profile-info-box pull-right">
+                                            <a href="@Url.Action("Details", "Profile", new { id = post.Sender + "/" })" class="btn btn-default btn-xs pull-right  primary-font rightButtonsMargin">@post.ProfileNameStored</a>                                      
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

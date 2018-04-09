@@ -22,6 +22,14 @@
                 <div class="desc"></div>
             </div>
             <hr />
+            <div class="info-menu menssageBtn menu-info-block">
+                <div class="menu-button">
+                        <a href="@Url.Action("Index", "Menssage")" class="btn btn-sm btn-primary col-lg-10 text-center">
+                            Mensagens
+                        </a>
+                </div>
+            </div>
+            <hr />
             <div class="info-menu menu-info-block">
                 <div class="title sub-title">
                     Equipes
@@ -36,11 +44,11 @@
                 </div>
                 @if (ViewBag.ProfileIn.Teams.Count != 0)
                 {
-                <div style="margin-bottom: 10px;">
-                    <a href="@Url.Action("MyTeams", "Team")">
-                        Minhas Equipes
-                    </a>
-                </div>
+                    <div style="margin-bottom: 10px;">
+                        <a href="@Url.Action("MyTeams", "Team")">
+                            Minhas Equipes
+                        </a>
+                    </div>
                 }
                 <div>
                     <a href="@Url.Action("Index", "Team")">

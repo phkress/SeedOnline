@@ -47,19 +47,8 @@ namespace Repository
             {
                 if (menssag.Id == 0)
                 {
-                    menssag.Profile = dbcontext.Profiles.Single(p => p.Id == menssag.Profile.Id);
-                    dbcontext.Menssages.Add(menssag);
+                    ProfileToUpdate.Menssages.Add(menssag);
                 }
-            }
-
-            dbcontext.SaveChanges();
-
-            var menssages = dbcontext.Menssages.Include(m => m.Profile).ToList();
-            var collectionOfMenssagesToUpdateTo = menssages.Where(m => profile.Menssages.Any(pm => pm.Id == m.Id));
-            ProfileToUpdate.Menssages.Clear();
-            foreach (var menssage in collectionOfMenssagesToUpdateTo)
-            {
-                ProfileToUpdate.Menssages.Add(menssage);
             }
 
             dbcontext.SaveChanges();

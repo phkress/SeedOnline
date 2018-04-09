@@ -83,8 +83,8 @@ namespace infTeam.Controllers
             {
                 Text = text,
                 Date = DateTime.Now,
-                Profile = profile,
-                ProfileNameStored = profile.Name
+                Sender = profile.Id,
+                ProfileNameStored = profile.Name,
             };
             profileToSend.Menssages.Add(menssage);
             profileService.SendMenssage(formId, profileToSend);

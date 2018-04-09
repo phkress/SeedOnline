@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model
 {
@@ -22,6 +20,7 @@ namespace Model
         {
            return this.Teams.ToList().Any(t => t.Id == id);
         }
+
         public bool HasContact(String id)
         {
             return this.Contacts.ToList().Any(c => c.Id == id);
@@ -35,6 +34,11 @@ namespace Model
         public IEnumerable<Team> TakeNTeams(int n)
         {
             return Teams.Take(n);
+        }
+
+        public IEnumerable<Menssage> MsgOrderByDate()
+        {
+            return Menssages.OrderByDescending(m => m.Date);
         }
 
     }
