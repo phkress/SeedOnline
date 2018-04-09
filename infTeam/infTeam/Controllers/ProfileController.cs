@@ -50,6 +50,12 @@ namespace infTeam.Controllers
         public ActionResult Details(String id)
         {
             ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
+
+            if(id == User.Identity.Name)
+            {
+                return RedirectToAction("In", "Home");
+            }
+
             ViewBag.ProfileDetail = profileService.GetProfile(id);
             return View();
         }

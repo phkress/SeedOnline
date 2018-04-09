@@ -16,6 +16,9 @@
                 <a href="@Url.Action("Edit", "Team", new { id = ViewBag.SelectedTeam.Id })" class="btn btn-primary btn-xs rightButtonsMargin"><span class="glyphicon glyphicon-pencil"></span> Editar Grupo</a>
                 <a href="@Url.Action("Leave", "Team", new { id = ViewBag.SelectedTeam.Id })" class="btn btn-danger btn-xs rightButtonsMargin"><b>-</b> Sair</a>
             </div>
+            <div>
+                <a href="@Url.Action("Details", "Team", new { id = ViewBag.SelectedTeam.Id })" class="btn btn-primary btn-xs rightButtonsMargin">Membros</a>
+            </div>
             <hr />
             <p>@ViewBag.SelectedTeam.Description</p>
             <hr />
@@ -62,12 +65,17 @@
                                     else
                                     {
                                         <div class="chat-img chat-profile">
-                                            <div class="profile-info-box pull-right">
-                                                <strong class="pull-right primary-font">@post.Profile.Name</strong>
-                                            </div>
-                                            <div class="profile-picture-box pull-right">
-                                                <img src="@post.Profile.ProfilePhoto" alt="User Avatar" class="img-circle img-fluid pull-right">
-                                            </div>
+                                            <a class="pull-right btn btn-default btn-sm" href="@Url.Action("Details", "Profile", new { id = @post.Profile.Id + "/" })">
+                                                <div class="contact-buttom-index row">
+                                                    <div class="profile-picture-box col-lg-4">
+                                                        <img src="@post.Profile.ProfilePhoto" alt="User Avatar" class="img-circle img-fluid">
+                                                    </div>
+                                                    <div class="col-lg-8">
+                                                        <strong>@post.Profile.Name</strong>
+                                                        <div>@post.Profile.Email</div>
+                                                    </div>
+                                                </div>
+                                            </a>
                                         </div>
                                     }
                                 </div>
