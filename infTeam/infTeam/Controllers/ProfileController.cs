@@ -5,12 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using Service;
 using Model;
+using System.Threading.Tasks;
 
 namespace infTeam.Controllers
 {
     public class ProfileController : Controller
     {
         ProfileService profileService = new ProfileService();
+        ImageService imageService = new ImageService();
 
         // GET: Profile
         public ActionResult Index()
@@ -24,6 +26,32 @@ namespace infTeam.Controllers
             }
             ViewBag.Error = TempData["Error"];
             return View();
+        }
+        
+        public ActionResult EditMyProfile()
+        {
+            ViewBag.ProfileIn = profileService.GetProfile(User.Identity.Name);
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> EditMyProfile(HttpPostedFileBase photo, FormCollection col)
+        {
+
+            var imageUrl = await imageService.UploadImageAsync(photo);
+
+            Profile profile = profileService.GetProfile(User.Identity.Name);
+            profile.Name = col["name"];
+            profile.Role = col["role"];
+
+            if (imageUrl != null || imageUrl != "")
+            {
+                profile.ProfilePhoto = imageUrl;
+            }
+
+            profileService.UpdateMyProfile(profile.Id, profile);
+            
+            return RedirectToAction("In", "Home");
         }
 
         // POST: Profile

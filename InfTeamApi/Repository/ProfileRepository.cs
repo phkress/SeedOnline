@@ -34,6 +34,7 @@ namespace Repository
             var ProfileToUpdate = dbcontext.Profiles.Include(p => p.Contacts).Include(p => p.Teams).Include(p => p.Menssages).Single(p => p.Id == profile.Id);
             ProfileToUpdate.Name = profile.Name;
             ProfileToUpdate.Role = profile.Role;
+            ProfileToUpdate.ProfilePhoto = profile.ProfilePhoto;
 
             var profiles = dbcontext.Profiles.Include(p => p.Contacts).Include(p => p.Teams).ToList();
             var collectionOfContactsToUpdateTo = profiles.Where(p => profile.Contacts.Any(prl => prl.Id == p.Id));

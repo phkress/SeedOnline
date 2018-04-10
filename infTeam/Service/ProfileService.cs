@@ -41,6 +41,11 @@ namespace Service
             profileRepository.UpdateProfile(id, profile);
         }
 
+        public void UpdateMyProfile(String id, Profile profile)
+        {
+            profileRepository.UpdateProfile(id, profile);
+        }
+
         public IEnumerable<Profile> SearchContact(String text)
         {
             IEnumerable<Profile> profiles = profileRepository.GetAll();
