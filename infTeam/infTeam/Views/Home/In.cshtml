@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "About";
+    ViewBag.Title = "";
 }
 
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -30,6 +30,46 @@
                     </div>
                 </div>
                 <hr />
+            </div>
+            <div>
+                <h2>Notas</h2>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                    <tbody>
+                                        @foreach (var todo in ViewBag.ProfileIn.TodoOrderByDate()) {
+                                        <tr class="row">
+                                            <td class="col-lg-9">@todo.Text</td>
+                                            <td class="col-lg-2 text-center">@todo.Date</td>
+                                            <td class="col-lg-1 text-center">
+                                                <a href="@Url.Action("RemoveTodo", "Home", new { id = todo.Id })" class="btn btn-danger btn-xs">
+                                                    <span class="glyphicon glyphicon-remove"></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="4">
+                                                <form class="form-inline col-lg-12">
+                                                    <div class="form-group">
+                                                        <input type="text" name="todoTextInput" class="form-control" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="submit" name="resp" value="Salvar Nota" formaction=@Url.Action("AddTodo", "Home") formmethod="post" class="btn btn-primary" />
+                                                    </div>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

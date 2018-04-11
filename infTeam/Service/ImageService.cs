@@ -22,7 +22,7 @@ namespace Service
             }
             try
             {
-                StorageCredentials storageCredentials = new StorageCredentials("infnetstorage", "nope");
+                StorageCredentials storageCredentials = new StorageCredentials("infnetstorage", "Z1iCH2IJs9I3XPBocnRNlqB6qVHrqGCu5j+iL/94259SS7WxnoHr8RkLKHjknT+WUv6bN45GamWawJNUzmpS8A==");
 
 
                 CloudStorageAccount storageAccount = new CloudStorageAccount(storageCredentials, true);                

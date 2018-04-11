@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Model;
+using Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Repository;
-using Model;
 
 namespace Service
 {
@@ -50,6 +48,26 @@ namespace Service
         {
             IEnumerable<Profile> profiles = profileRepository.GetAll();
             return  profiles.Where(p => p.Name.ToLower().Contains(text.ToLower()));
+        }
+
+        public void AddTodo(String text, Profile profile)
+        {
+            Todo todo = new Todo()
+            {
+                Text = text,
+                Date = DateTime.Now
+            };
+            profile.Todos.Add(todo);
+            profileRepository.UpdateProfile(profile.Id, profile);
+        }        
+
+        public void RemoveTodo(int id, Profile profile)
+        {
+            var todo = profile.Todos.ToList().SingleOrDefault(t => t.Id == id);
+            if (todo != null)
+                profile.Todos.Remove(todo);
+
+            profileRepository.UpdateProfile(profile.Id, profile);
         }
 
         public void CreateNewProfile(Profile profile)

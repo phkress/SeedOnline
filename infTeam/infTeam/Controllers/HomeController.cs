@@ -42,11 +42,25 @@ namespace infTeam.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult AddTodo(FormCollection col)
         {
-            ViewBag.Message = "Your contact page.";
+            var text = col["todoTextInput"];
 
-            return View();
+            if (text == null || text == "")
+            {
+                return RedirectToAction("In");
+            }
+
+            Profile profile = profileService.GetProfile(User.Identity.Name);
+            profileService.AddTodo(text, profile);
+            return RedirectToAction("In");
+        }
+
+        public ActionResult RemoveTodo(int id)
+        {
+            Profile profile = profileService.GetProfile(User.Identity.Name);
+            profileService.RemoveTodo(id, profile);
+            return RedirectToAction("In");
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Model
         public String ProfilePhoto { get; set; }
         public String Email { get; set; }
         public String Role { get; set; }
+        public virtual ICollection<Todo> Todos { get; set; }
         public virtual ICollection<Team> Teams { get; set; }
         public virtual ICollection<Profile> Contacts { get; set; }
         public virtual ICollection<Menssage> Menssages { get; set; }
@@ -23,6 +24,7 @@ namespace Model
             Teams = new HashSet<Team>();
             Contacts = new HashSet<Profile>();
             Menssages = new HashSet<Menssage>();
+            Todos = new HashSet<Todo>();
         }
     }
 }

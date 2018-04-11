@@ -5,6 +5,7 @@ using System.Web;
 using Service;
 using System.Web.Mvc;
 using Model;
+using System.Threading.Tasks;
 
 namespace infTeam.Controllers
 {
@@ -13,6 +14,8 @@ namespace infTeam.Controllers
     {
         TeamService teamService = new TeamService();
         ProfileService profileService = new ProfileService();
+        ImageService imageService = new ImageService();
+
         // GET: Team
         public ActionResult Index()
         {
@@ -60,19 +63,32 @@ namespace infTeam.Controllers
             return View();
         }
 
+        
         [HttpPost]
-        public ActionResult In(int id, FormCollection collection)
+        public async Task<ActionResult> In(int id, HttpPostedFileBase photo, FormCollection collection)
         {
+
+
             Profile profile = profileService.GetProfile(User.Identity.Name);
             if (!profile.Teams.Any(t => t.Id == id))
             {
                 return RedirectToAction("Index", "Team");
             }
 
+
+            var imageUrl = await imageService.UploadImageAsync(photo);
+
             Team team = teamService.GetTeam(id);
+
+            var foto = "";
+
+            if (imageUrl != null && imageUrl != "")
+            {
+                foto = imageUrl;
+            }
             Post post = new Post()
             {
-                Photo = "",
+                Photo = foto,
                 Text = collection["postTextarea"],
                 Date = DateTime.Now,
                 Profile = profile,

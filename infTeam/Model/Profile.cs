@@ -14,16 +14,17 @@ namespace Model
         public ICollection<Team> Teams { get; set; }
         public ICollection<Profile> Contacts { get; set; }
         public virtual ICollection<Menssage> Menssages { get; set; }
+        public virtual ICollection<Todo> Todos { get; set; }
 
 
         public bool HasTeam(int id)
         {
-           return this.Teams.ToList().Any(t => t.Id == id);
+           return Teams.ToList().Any(t => t.Id == id);
         }
 
         public bool HasContact(String id)
         {
-            return this.Contacts.ToList().Any(c => c.Id == id);
+            return Contacts.ToList().Any(c => c.Id == id);
         }
 
         public IEnumerable<Profile> TakeNContacts(int n)
@@ -39,6 +40,11 @@ namespace Model
         public IEnumerable<Menssage> MsgOrderByDate()
         {
             return Menssages.OrderByDescending(m => m.Date);
+        }
+
+        public IEnumerable<Todo> TodoOrderByDate()
+        {
+            return Todos.OrderByDescending(t => t.Date);
         }
 
     }
