@@ -1,12 +1,9 @@
 ﻿using Model;
 using Model.Interface;
 using Repository.Persistence;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Linq;
 
 
 namespace Repository

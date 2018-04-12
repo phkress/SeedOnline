@@ -1,14 +1,9 @@
-﻿using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
+﻿using Model;
+using Service;
+using System.Collections.Generic;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Model;
-using Repository.Persistence;
-using Repository;
-using Service;
-using System.Collections.Generic;
 
 namespace InfTeamApi.Controllers
 {

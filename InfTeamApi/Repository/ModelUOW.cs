@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Model.Interface;
-using Repository;
+﻿using Model.Interface;
 using Repository.Persistence;
 
 namespace Repository
@@ -15,15 +9,12 @@ namespace Repository
 
         public IProfile Profiles { get; private set; }
 
-        public IPost Posts { get; private set; }
-
         public ITeam Teams { get; private set; }
 
         public ModelUOW(InfTeamApiDBContext context)
         {
             _context = context;
             Profiles = new ProfileRepository(_context);
-            Posts = new PostRepository(_context);
             Teams = new TeamRepository(_context);
         }        
 

@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="ModelUOW.cs" />
     <Compile Include="Persistence\InfTeamApiDBContext.cs" />
-    <Compile Include="PostRepository.cs" />
     <Compile Include="ProfileRepository.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
