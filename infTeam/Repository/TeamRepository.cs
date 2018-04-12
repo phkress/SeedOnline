@@ -6,7 +6,7 @@ namespace Repository
     public class TeamRepository
     {
 
-        RepositoryComposer<Team> repositoryComposer = new RepositoryComposer<Team>("http://localhost:53480");
+        RepositoryComposer<Team> repositoryComposer = new RepositoryComposer<Team>("http://infteamapi.azurewebsites.net");
 
         public IEnumerable<Team> GetAll()
         {

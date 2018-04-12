@@ -9,7 +9,7 @@ namespace Repository
 {
     public class ProfileRepository
     {
-        RepositoryComposer<Profile> repositoryComposer = new RepositoryComposer<Profile>("http://localhost:53480");
+        RepositoryComposer<Profile> repositoryComposer = new RepositoryComposer<Profile>("http://infteamapi.azurewebsites.net");
 
         public IEnumerable<Profile> GetAll()
         {
