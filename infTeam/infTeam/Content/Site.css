@@ -117,3 +117,21 @@ textarea {
     border-radius: 15px;
     vertical-align: middle;
 }
+
+.login-box {
+    margin-top: 20px;
+}
+
+.post-img-box {
+    margin-top: 20px;
+}
+
+.post-text-box {
+    margin-top: 25px;
+}
+
+.postPhoto {
+    height: auto;
+    max-height: 300px;
+    max-width: 300px;
+}

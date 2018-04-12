@@ -49,15 +49,18 @@
                         {
                             <li class="right clearfix col-lg-12">
                                 <div class="inner-chat row">
-                                    <div class="chat-body clearfix chat-mine">
-                                        <div class="header header-chat">
+                                    <div class="chat-body clearfix chat-mine row">
+                                        <div class="header header-chat col-lg-12">
                                             <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>@post.Date</small>
                                         </div>
-
-                                        <img class="detailProfileImg" alt="" src="@post.Photo">
-                                        <p>
-                                            @post.Text
-                                        </p>
+                                        <div class="col-lg-12 post-img-box">
+                                            <img class="postPhoto img-responsive" alt="" src="@post.Photo">
+                                        </div>
+                                        <div class="col-lg-12 post-text-box">
+                                            <p>
+                                                @post.Text
+                                            </p>
+                                        </div>
                                     </div>
                                     <hr />
                                     @if (post.Profile == null)
